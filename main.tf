@@ -1,6 +1,11 @@
 resource "azurerm_resource_group" "rg" {
   location = var.resource_group_location
   name     = "${random_pet.prefix.id}-rg"
+  tags = {
+    git_org   = "blahsi"
+    git_repo  = "test"
+    yor_trace = "4a0761cd-1611-44e2-a84c-72af68ece932"
+  }
 }
 
 # Create virtual network
@@ -9,6 +14,11 @@ resource "azurerm_virtual_network" "my_terraform_network" {
   address_space       = ["10.0.0.0/16"]
   location            = azurerm_resource_group.rg.location
   resource_group_name = azurerm_resource_group.rg.name
+  tags = {
+    git_org   = "blahsi"
+    git_repo  = "test"
+    yor_trace = "802355cc-2095-466d-a6ed-76214de7f1ea"
+  }
 }
 
 # Create subnet
@@ -25,6 +35,11 @@ resource "azurerm_public_ip" "my_terraform_public_ip" {
   location            = azurerm_resource_group.rg.location
   resource_group_name = azurerm_resource_group.rg.name
   allocation_method   = "Dynamic"
+  tags = {
+    git_org   = "blahsi"
+    git_repo  = "test"
+    yor_trace = "c590eced-5269-4aeb-b39c-cd3e50e13a1f"
+  }
 }
 
 # Create Network Security Group and rules
@@ -55,6 +70,11 @@ resource "azurerm_network_security_group" "my_terraform_nsg" {
     source_address_prefix      = "*"
     destination_address_prefix = "*"
   }
+  tags = {
+    git_org   = "blahsi"
+    git_repo  = "test"
+    yor_trace = "5b76cbff-bb8c-4b95-9a32-35d8c46d9746"
+  }
 }
 
 # Create network interface
@@ -68,6 +88,11 @@ resource "azurerm_network_interface" "my_terraform_nic" {
     subnet_id                     = azurerm_subnet.my_terraform_subnet.id
     private_ip_address_allocation = "Dynamic"
     public_ip_address_id          = azurerm_public_ip.my_terraform_public_ip.id
+  }
+  tags = {
+    git_org   = "blahsi"
+    git_repo  = "test"
+    yor_trace = "ce94c251-3fb0-4fa9-a62a-59251e404200"
   }
 }
 
@@ -99,6 +124,11 @@ resource "azurerm_windows_virtual_machine" "main" {
     sku       = "2022-datacenter-azure-edition"
     version   = "latest"
   }
+  tags = {
+    git_org   = "blahsi"
+    git_repo  = "test"
+    yor_trace = "49a9fb73-04ad-4cb0-b6cc-194b5e95dd73"
+  }
 }
 
 # Install IIS web server to the virtual machine
@@ -115,6 +145,11 @@ resource "azurerm_virtual_machine_extension" "web_server_install" {
       "commandToExecute": "powershell -ExecutionPolicy Unrestricted Install-WindowsFeature -Name Web-Server -IncludeAllSubFeature -IncludeManagementTools"
     }
   SETTINGS
+  tags = {
+    git_org   = "blahsi"
+    git_repo  = "test"
+    yor_trace = "d52a5d62-5f89-497e-bfdb-e953ea655452"
+  }
 }
 
 # Generate random text for a unique storage account name
