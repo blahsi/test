@@ -51,9 +51,9 @@ jobs:
     - name: Checkout repo
       uses: actions/checkout@v2
       with:
-       fetch-depth: 0
-       github-token: ${{ secrets.TOKEN }}
+        fetch-depth: 0
+        github-token: ${{ secrets.TOKEN }}
     - name: Run yor action
       uses: bridgecrewio/yor-action@main
       with:
-       github-token: ${{ secrets.TOKEN }}
+        github-token: ${{ secrets.TOKEN }}
