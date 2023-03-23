@@ -10,7 +10,6 @@ permissions:
   id-token: write
   pull-requests: write
   contents: read
-  repository-projects: write
 
 jobs:
   terraform:
