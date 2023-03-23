@@ -1,6 +1,16 @@
 resource "azurerm_resource_group" "rg" {
   location = var.resource_group_location
   name     = "${random_pet.prefix.id}-rg"
+  tags = {
+    git_commit           = "b3d834cdc3a69cba9ec98066fa16108f086fd525"
+    git_file             = "main.tf"
+    git_last_modified_at = "2023-03-22 20:39:36"
+    git_last_modified_by = "113141616+blahsi@users.noreply.github.com"
+    git_modifiers        = "113141616+blahsi"
+    git_org              = "blahsi"
+    git_repo             = "test"
+    yor_trace            = "ace3b69b-d0b9-49e9-9b73-d773fa99864e"
+  }
 }
 
 # Create virtual network
@@ -9,6 +19,16 @@ resource "azurerm_virtual_network" "my_terraform_network" {
   address_space       = ["10.0.0.0/16"]
   location            = azurerm_resource_group.rg.location
   resource_group_name = azurerm_resource_group.rg.name
+  tags = {
+    git_commit           = "b3d834cdc3a69cba9ec98066fa16108f086fd525"
+    git_file             = "main.tf"
+    git_last_modified_at = "2023-03-22 20:39:36"
+    git_last_modified_by = "113141616+blahsi@users.noreply.github.com"
+    git_modifiers        = "113141616+blahsi"
+    git_org              = "blahsi"
+    git_repo             = "test"
+    yor_trace            = "b546df32-1a0c-4d19-ba3c-0d80ec882d77"
+  }
 }
 
 # Create subnet
@@ -25,6 +45,16 @@ resource "azurerm_public_ip" "my_terraform_public_ip" {
   location            = azurerm_resource_group.rg.location
   resource_group_name = azurerm_resource_group.rg.name
   allocation_method   = "Dynamic"
+  tags = {
+    git_commit           = "b3d834cdc3a69cba9ec98066fa16108f086fd525"
+    git_file             = "main.tf"
+    git_last_modified_at = "2023-03-22 20:39:36"
+    git_last_modified_by = "113141616+blahsi@users.noreply.github.com"
+    git_modifiers        = "113141616+blahsi"
+    git_org              = "blahsi"
+    git_repo             = "test"
+    yor_trace            = "35dbfd2e-d14c-45c2-89ce-1e454d0a1263"
+  }
 }
 
 # Create Network Security Group and rules
@@ -55,6 +85,16 @@ resource "azurerm_network_security_group" "my_terraform_nsg" {
     source_address_prefix      = "*"
     destination_address_prefix = "*"
   }
+  tags = {
+    git_commit           = "b3d834cdc3a69cba9ec98066fa16108f086fd525"
+    git_file             = "main.tf"
+    git_last_modified_at = "2023-03-22 20:39:36"
+    git_last_modified_by = "113141616+blahsi@users.noreply.github.com"
+    git_modifiers        = "113141616+blahsi"
+    git_org              = "blahsi"
+    git_repo             = "test"
+    yor_trace            = "90baf987-059a-4c49-b70b-1cfa782597a5"
+  }
 }
 
 # Create network interface
@@ -68,6 +108,16 @@ resource "azurerm_network_interface" "my_terraform_nic" {
     subnet_id                     = azurerm_subnet.my_terraform_subnet.id
     private_ip_address_allocation = "Dynamic"
     public_ip_address_id          = azurerm_public_ip.my_terraform_public_ip.id
+  }
+  tags = {
+    git_commit           = "b3d834cdc3a69cba9ec98066fa16108f086fd525"
+    git_file             = "main.tf"
+    git_last_modified_at = "2023-03-22 20:39:36"
+    git_last_modified_by = "113141616+blahsi@users.noreply.github.com"
+    git_modifiers        = "113141616+blahsi"
+    git_org              = "blahsi"
+    git_repo             = "test"
+    yor_trace            = "8b38e315-a966-47d4-ad8d-290557b17103"
   }
 }
 
@@ -99,6 +149,16 @@ resource "azurerm_windows_virtual_machine" "main" {
     sku       = "2022-datacenter-azure-edition"
     version   = "latest"
   }
+  tags = {
+    git_commit           = "b3d834cdc3a69cba9ec98066fa16108f086fd525"
+    git_file             = "main.tf"
+    git_last_modified_at = "2023-03-22 20:39:36"
+    git_last_modified_by = "113141616+blahsi@users.noreply.github.com"
+    git_modifiers        = "113141616+blahsi"
+    git_org              = "blahsi"
+    git_repo             = "test"
+    yor_trace            = "ac5c6f53-b0f3-44d1-98c3-3ad82fc70a76"
+  }
 }
 
 # Install IIS web server to the virtual machine
@@ -115,6 +175,16 @@ resource "azurerm_virtual_machine_extension" "web_server_install" {
       "commandToExecute": "powershell -ExecutionPolicy Unrestricted Install-WindowsFeature -Name Web-Server -IncludeAllSubFeature -IncludeManagementTools"
     }
   SETTINGS
+  tags = {
+    git_commit           = "b3d834cdc3a69cba9ec98066fa16108f086fd525"
+    git_file             = "main.tf"
+    git_last_modified_at = "2023-03-22 20:39:36"
+    git_last_modified_by = "113141616+blahsi@users.noreply.github.com"
+    git_modifiers        = "113141616+blahsi"
+    git_org              = "blahsi"
+    git_repo             = "test"
+    yor_trace            = "80fc2a45-960e-4be2-a693-80cc2b136c80"
+  }
 }
 
 # Generate random text for a unique storage account name
