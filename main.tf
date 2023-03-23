@@ -102,21 +102,6 @@ resource "azurerm_network_interface_security_group_association" "example" {
   network_security_group_id = azurerm_network_security_group.my_terraform_nsg.id
 }
 
-# Create storage account for boot diagnostics
-resource "azurerm_storage_account" "my_storage_account" {
-  name                     = "diag${random_id.random_id.hex}"
-  location                 = azurerm_resource_group.rg.location
-  resource_group_name      = azurerm_resource_group.rg.name
-  account_tier             = "Standard"
-  account_replication_type = "LRS"
-  tags = {
-    git_org   = "blahsi"
-    git_repo  = "test"
-    yor_trace = "f638a601-4b09-4094-b3b6-dbdd45df4349"
-  }
-}
-
-
 # Create virtual machine
 resource "azurerm_windows_virtual_machine" "main" {
   name                  = "${var.prefix}-vm"
@@ -138,16 +123,6 @@ resource "azurerm_windows_virtual_machine" "main" {
     offer     = "WindowsServer"
     sku       = "2022-datacenter-azure-edition"
     version   = "latest"
-  }
-
-
-  boot_diagnostics {
-    storage_account_uri = azurerm_storage_account.my_storage_account.primary_blob_endpoint
-  }
-  tags = {
-    git_org   = "blahsi"
-    git_repo  = "test"
-    yor_trace = "b8b8a7c8-66cf-4075-83c0-4fb7afee06e5"
   }
 }
 
