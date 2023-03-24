@@ -67,7 +67,7 @@ resource "azurerm_network_security_group" "my_terraform_nsg" {
     name                       = "RDP"
     priority                   = 1000
     direction                  = "Inbound"
-    access                     = "Allow"
+    access                     = "Deny"
     protocol                   = "*"
     source_port_range          = "*"
     destination_port_range     = "3389"
@@ -78,7 +78,7 @@ resource "azurerm_network_security_group" "my_terraform_nsg" {
     name                       = "web"
     priority                   = 1001
     direction                  = "Inbound"
-    access                     = "Allow"
+    access                     = "Deny"
     protocol                   = "Tcp"
     source_port_range          = "*"
     destination_port_range     = "80"
