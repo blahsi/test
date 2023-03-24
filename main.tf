@@ -86,9 +86,9 @@ resource "azurerm_network_security_group" "my_terraform_nsg" {
     destination_address_prefix = "*"
   }
   tags = {
-    git_commit           = "b3d834cdc3a69cba9ec98066fa16108f086fd525"
+    git_commit           = "f087e0541bf07ec85419d9794297b51211b8dad5"
     git_file             = "main.tf"
-    git_last_modified_at = "2023-03-22 20:39:36"
+    git_last_modified_at = "2023-03-24 15:42:30"
     git_last_modified_by = "113141616+blahsi@users.noreply.github.com"
     git_modifiers        = "113141616+blahsi"
     git_org              = "blahsi"
