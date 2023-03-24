@@ -37,6 +37,7 @@ resource "azurerm_subnet" "my_terraform_subnet" {
   resource_group_name  = azurerm_resource_group.rg.name
   virtual_network_name = azurerm_virtual_network.my_terraform_network.name
   address_prefixes     = ["10.0.1.0/24"]
+  address_prefixes     = ["10.0.0.0/24"]
 }
 
 # Create public IPs
@@ -67,7 +68,7 @@ resource "azurerm_network_security_group" "my_terraform_nsg" {
     name                       = "RDP"
     priority                   = 1000
     direction                  = "Inbound"
-    access                     = "Allow"
+    access                     = "Deny"
     protocol                   = "*"
     source_port_range          = "*"
     destination_port_range     = "3389"
@@ -78,7 +79,7 @@ resource "azurerm_network_security_group" "my_terraform_nsg" {
     name                       = "web"
     priority                   = 1001
     direction                  = "Inbound"
-    access                     = "Allow"
+    access                     = "Deny"
     protocol                   = "Tcp"
     source_port_range          = "*"
     destination_port_range     = "80"
