@@ -48,10 +48,3 @@ jobs:
 # Apply Terraform changes
     - name: Terraform Apply
       run: terraform apply -auto-approve -input=false
-      
-    - name: Checkout repo
-      uses: actions/checkout@v2
-      with:
-        fetch-depth: 0
-    - name: Run yor action
-      uses: bridgecrewio/yor-action@main
