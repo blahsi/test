@@ -2,6 +2,9 @@ resource "azurerm_resource_group" "rg" {
   location = var.resource_group_location
   name     = "${random_pet.prefix.id}-rg"
   tags = {
+    git_org   = "blahsi"
+    git_repo  = "test"
+    yor_trace = "91dd6c53-936c-4c24-b6e6-87c1433026f4"
   }
 }
 
@@ -12,6 +15,9 @@ resource "azurerm_virtual_network" "my_terraform_network" {
   location            = azurerm_resource_group.rg.location
   resource_group_name = azurerm_resource_group.rg.name
   tags = {
+    git_org   = "blahsi"
+    git_repo  = "test"
+    yor_trace = "6a78e628-18d7-4124-8a44-391867db9ba0"
   }
 }
 
@@ -30,6 +36,9 @@ resource "azurerm_public_ip" "my_terraform_public_ip" {
   resource_group_name = azurerm_resource_group.rg.name
   allocation_method   = "Dynamic"
   tags = {
+    git_org   = "blahsi"
+    git_repo  = "test"
+    yor_trace = "3c9f06de-b000-49a3-accf-a9616b485bc8"
   }
 }
 
@@ -62,6 +71,9 @@ resource "azurerm_network_security_group" "my_terraform_nsg" {
     destination_address_prefix = "*"
   }
   tags = {
+    git_org   = "blahsi"
+    git_repo  = "test"
+    yor_trace = "f9aa79a1-e95b-417f-897b-691f7c4095d9"
   }
 }
 
@@ -78,6 +90,9 @@ resource "azurerm_network_interface" "my_terraform_nic" {
     public_ip_address_id          = azurerm_public_ip.my_terraform_public_ip.id
   }
   tags = {
+    git_org   = "blahsi"
+    git_repo  = "test"
+    yor_trace = "a874de53-a658-4fa2-8151-8e595080e3da"
   }
 }
 
@@ -110,6 +125,9 @@ resource "azurerm_windows_virtual_machine" "main" {
     version   = "latest"
   }
   tags = {
+    git_org   = "blahsi"
+    git_repo  = "test"
+    yor_trace = "b07338af-aa82-452b-b65e-80e16fc24ec0"
   }
 }
 
@@ -128,6 +146,9 @@ resource "azurerm_virtual_machine_extension" "web_server_install" {
     }
   SETTINGS
   tags = {
+    git_org   = "blahsi"
+    git_repo  = "test"
+    yor_trace = "9f1195d9-db13-47c0-a57b-7d313b41117f"
   }
 }
 
